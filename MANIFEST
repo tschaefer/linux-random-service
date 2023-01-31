@@ -1,0 +1,11 @@
+MANIFEST
+Makefile.PL
+bin/rnd-service
+lib/Linux/Random/Service.pm
+lib/Linux/Random/Service/Controller.pm
+lib/Linux/Random/Service/Plugin.pm
+lib/Linux/Random/Service/Task.pm
+t/lib/Mock/Linux/Random/Service.pm
+t/enqueue.t
+t/result.t
+t/status.t

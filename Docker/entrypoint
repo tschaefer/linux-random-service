@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+pg_ctlcluster --skip-systemctl-redirect 13-main start
+redis-server /etc/redis/redis.conf --daemonize yes
+
+export RANDOM_SERVICE_CONFIG=/etc/linux-random-service.conf
+rnd-service daemon --mode production --listen http://0.0.0.0:5000 &
+rnd-service minion worker --mode production &
+
+while true; do sleep 1; done &
+
+wait ${!}
