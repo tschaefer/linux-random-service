@@ -6,17 +6,17 @@ set -ex
 apt-get update
 
 # Install required packages.
-apt install --no-install-recommends --no-install-suggests --yes \
-    postgresql-13 \
+apt-get install --no-install-recommends --no-install-suggests --yes \
+    postgresql-15 \
     redis-server
 
 # Configure PostgreSQL.
-pg_ctlcluster --skip-systemctl-redirect 13-main start
+pg_ctlcluster --skip-systemctl-redirect 15-main start
 su --login postgres --command \
     "psql -c \"CREATE ROLE bender WITH LOGIN PASSWORD 'rocks';\""
 su --login postgres --command \
     "psql -c \"CREATE DATABASE random OWNER bender;\""
-pg_ctlcluster --skip-systemctl-redirect --mode fast 13-main stop
+pg_ctlcluster --skip-systemctl-redirect --mode fast 15-main stop
 
 # Fetch required Perl modules.
 curl --location --insecure --output /tmp/linux-random.zip \

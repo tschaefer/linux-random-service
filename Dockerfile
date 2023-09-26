@@ -1,4 +1,4 @@
-FROM docker.io/library/perl
+FROM docker.io/library/perl:5.38
 
 COPY Docker/bootstrap.sh /tmp/
 RUN chmod +x /tmp/bootstrap.sh
